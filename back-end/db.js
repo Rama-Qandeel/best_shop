@@ -1,18 +1,29 @@
-const mysql = require('mysql2');
+const mongoose = require('mongoose');
+require("dotenv").config()
+const db = mongoose.connection;
+mongoose.connection.id; 
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-});
+const options = {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  _id:false
+};
 
-connection.connect((err) => {
-  if (err) {
-    console.error('CONNECTION ERROR: ', err.stack);
-    return;
-  }
-  console.log('CONNECTION ID: ', connection.threadId);
-});
+const DB_URL =process.env.DB_URL;
 
-module.exports = connection;
+mongoose
+  .connect(DB_URL, options)
+  .then(() => {
+    console.log('DB READY TO USE');
+  })
+  .catch((err) => {
+    console.log('ERR: ', err);
+  });
+
+// These lines Extra
+db.on('error', (err) => console.log('ERR:', err.message));
+
+db.on('connected', () => console.log('MONGO CONNECTED'));
+
+db.on('disconnected', () => console.log('MONGO DISCONNECTED'));
