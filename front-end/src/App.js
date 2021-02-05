@@ -1,29 +1,18 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react'
+import {Container} from "react-bootstrap"
+import Footer from './components/Footer'
+import Header from './components/Header'
 
-// Class component
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    return (
-      <div>
-        <h1>HELLO WORLD</h1>
-      </div>
-    );
-  }
-}
-
-/* 
-// functional component
-const App = () => {
+ const App = () => {
   return (
     <div>
-      <h1>HELLO WORLD</h1>
+      <Header/>
+      <main>
+        <Container><h1>hi</h1></Container>
+        </main>
+      <Footer/>
     </div>
-  );
-};
+  )
+}
+
 export default App;
-*/
