@@ -16,9 +16,16 @@ const App = () => {
           <Route exact path="/">
             <HomeScreen />
           </Route>
-          <Route exact path="/product/:id">
-            <ProductScreen />
-          </Route>
+
+          <Route
+            exact
+            path="/product/:id"
+            render={(props) => (
+              <div>
+                <ProductScreen {...props} />
+              </div>
+            )}
+          />
         </Container>
       </main>
       <Footer />
