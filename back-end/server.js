@@ -3,9 +3,8 @@ import mainRouter from './routes/main-route.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
-
 import db from './db.js'
-// const db = require('./db');
+db()
 const app = express();
 
 app.use(cors()); 
