@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
 const mainRouter = express.Router();
 
 mainRouter.get('/', (req, res) => {
   res.json('HELLO WORLD');
 });
 
-module.exports = mainRouter;
+export default mainRouter;
