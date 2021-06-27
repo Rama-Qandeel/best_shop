@@ -10,7 +10,6 @@ mainRouter.get('/product', asyncHandler(async (req, res) => {
 
 mainRouter.get('/product/:id', asyncHandler(async (req, res) => {
   const products = await Product.findById(req.params.id)
-  console.log('**********',products)
   if(products){
     res.json(products);
   } else {
