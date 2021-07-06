@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
+import CartScreen from "./screens/CartScreen";
 
 const App = () => {
   return (
@@ -23,6 +24,15 @@ const App = () => {
             render={(props) => (
               <div>
                 <ProductScreen {...props} />
+              </div>
+            )}
+          />
+          <Route
+            exact
+            path="/cart/:id?"
+            render={(props) => (
+              <div>
+                <CartScreen {...props} />
               </div>
             )}
           />
