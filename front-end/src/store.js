@@ -13,7 +13,7 @@ cart: cartListReducer,
 const getItems = localStorage.getItem('cartItems')? JSON.parse(localStorage.getItem('cartItems')):[]
 
 const initialState = {
-  cart : {cartItems : []}
+  cart : {cartItems : getItems}
 }
 
 const middleware = [thunk]
