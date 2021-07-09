@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
+import LoginScreen from "./screens/LoginScreen"
 import CartScreen from "./screens/CartScreen";
 
 const App = () => {
@@ -24,6 +25,15 @@ const App = () => {
             render={(props) => (
               <div>
                 <ProductScreen {...props} />
+              </div>
+            )}
+          />
+          <Route
+            exact
+            path="/login"
+            render={(props) => (
+              <div>
+                <LoginScreen {...props} />
               </div>
             )}
           />
