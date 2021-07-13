@@ -20,13 +20,16 @@ const LoginScreen = ({ location, history }) => {
   
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect)
+     history.push(redirect)
     }
   }, [history, userInfo, redirect])
   
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(userLogin(email, password))
+    if (userInfo) {
+      history.push('/')
+    }
   }
   return (
     <FormContainer>

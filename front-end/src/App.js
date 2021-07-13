@@ -7,6 +7,7 @@ import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import LoginScreen from "./screens/LoginScreen"
+import RegisterScreen from "./screens/RegisterScreen";
 import CartScreen from "./screens/CartScreen";
 
 const App = () => {
@@ -34,6 +35,15 @@ const App = () => {
             render={(props) => (
               <div>
                 <LoginScreen {...props} />
+              </div>
+            )}
+          />
+             <Route
+            exact
+            path="/register"
+            render={(props) => (
+              <div>
+                <RegisterScreen {...props} />
               </div>
             )}
           />
