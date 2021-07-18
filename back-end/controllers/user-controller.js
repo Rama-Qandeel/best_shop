@@ -7,7 +7,7 @@ const createUser = (asyncHandler(async(req,res) => {
 
     const user = await User.find({email})
 
-    if(user && (await user[0].matchPassword(password)) ){
+    if(user[0] && (await user[0].matchPassword(password)) ){
     res.json({
     id : user[0].id,
     name : user[0].name,
@@ -65,8 +65,32 @@ const geteUser = (asyncHandler(async(req,res) => {
         }
       })
 
+const updateUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id)
+  if (user) {
+    user.name = req.body.name || user.name
+    user.email = req.body.email || user.email
+    if (req.body.password) {
+      user.password = req.body.password
+    }
+
+    const updatedUser = await user.save()
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      token: generateToken(updatedUser._id),
+    })
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
 export {
     createUser,
     geteUser,
-    registerUser
+    registerUser,
+    updateUserProfile
 }
