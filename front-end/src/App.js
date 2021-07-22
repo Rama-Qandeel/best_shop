@@ -10,6 +10,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import LoginScreen from "./screens/LoginScreen"
 import RegisterScreen from "./screens/RegisterScreen";
 import CartScreen from "./screens/CartScreen";
+import ShippingScreen from "./screens/ShippingScreen";
 
 const App = () => {
   return (
@@ -27,6 +28,15 @@ const App = () => {
             render={(props) => (
               <div>
                 <ProductScreen {...props} />
+              </div>
+            )}
+          />
+                   <Route
+            exact
+            path="/shipping"
+            render={(props) => (
+              <div>
+                <ShippingScreen {...props} />
               </div>
             )}
           />
