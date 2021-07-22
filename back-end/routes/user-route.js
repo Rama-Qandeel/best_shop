@@ -4,8 +4,8 @@ import {protect} from '../middlewares/auth.js'
 import {createUser, geteUser, registerUser, updateUserProfile} from '../controllers/user-controller.js'
 
 mainRouter.post('/login',createUser);
-mainRouter.get('/profile',protect,geteUser);
-mainRouter.put('/profile/:id',protect,updateUserProfile);
+mainRouter.get('/user/:id',protect,geteUser);
+mainRouter.put('/profile',protect,updateUserProfile);
 mainRouter.post('/register',registerUser);
 
 
