@@ -35,6 +35,4 @@ const addOrderItems = asyncHandler(async (req, res) => {
     }
   })
   
-export default {
-    addOrderItems
-}
+export default addOrderItems

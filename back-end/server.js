@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(mainRouter);
 app.use(userRouter);
+app.use (orderRouter)
 
 app.use(notFound)
 app.use(errorHandler)
