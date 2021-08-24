@@ -1,6 +1,7 @@
 import express from 'express';
 import mainRouter from './routes/main-route.js';
 import userRouter from './routes/user-route.js';
+import orderRouter from './routes/order-route.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { notFound, errorHandler } from './middlewares/404.js'
