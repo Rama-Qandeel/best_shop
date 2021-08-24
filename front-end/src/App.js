@@ -12,6 +12,7 @@ import RegisterScreen from "./screens/RegisterScreen";
 import CartScreen from "./screens/CartScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
+import PlaceOrder from "./screens/PlaceOrder";
 
 const App = () => {
   return (
@@ -47,6 +48,15 @@ const App = () => {
             render={(props) => (
               <div>
                 <PaymentScreen {...props} />
+              </div>
+            )}
+          />
+                              <Route
+            exact
+            path="/placeorder"
+            render={(props) => (
+              <div>
+                <PlaceOrder {...props} />
               </div>
             )}
           />
