@@ -7,12 +7,13 @@ import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-import LoginScreen from "./screens/LoginScreen"
+import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import CartScreen from "./screens/CartScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrder from "./screens/PlaceOrder";
+import OrderScreen from "./screens/OrderScreen";
 
 const App = () => {
   return (
@@ -33,7 +34,16 @@ const App = () => {
               </div>
             )}
           />
-                   <Route
+                    <Route
+            exact
+            path="/order/:id"
+            render={(props) => (
+              <div>
+                <OrderScreen {...props} />
+              </div>
+            )}
+          />
+          <Route
             exact
             path="/shipping"
             render={(props) => (
@@ -42,7 +52,7 @@ const App = () => {
               </div>
             )}
           />
-                    <Route
+          <Route
             exact
             path="/payment"
             render={(props) => (
@@ -51,7 +61,7 @@ const App = () => {
               </div>
             )}
           />
-                              <Route
+          <Route
             exact
             path="/placeorder"
             render={(props) => (
@@ -69,7 +79,7 @@ const App = () => {
               </div>
             )}
           />
-             <Route
+          <Route
             exact
             path="/register"
             render={(props) => (
@@ -78,7 +88,7 @@ const App = () => {
               </div>
             )}
           />
-                       <Route
+          <Route
             exact
             path="/profile"
             render={(props) => (
