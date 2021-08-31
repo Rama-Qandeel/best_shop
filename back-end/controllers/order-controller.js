@@ -39,7 +39,6 @@ const getOrderById = asyncHandler(async (req, res) => {
     "user",
     "name email",
   );
-  console.log("order-------------", order);
   if (order) {
     res.json(order);
   } else {
