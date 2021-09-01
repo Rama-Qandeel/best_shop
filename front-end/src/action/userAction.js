@@ -189,7 +189,7 @@ export const getUsers = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put(`http://localhost:5000/users`,config)
+    const { data } = await axios.get(`http://localhost:5000/users`,config)
 
     dispatch({
       type: USER_LIST_SUCCESS,
