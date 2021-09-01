@@ -46,7 +46,7 @@ const App = () => {
           />
           <Route
             exact
-            path="/userlist"
+            path="/admin/userlist"
             render={(props) => (
               <div>
                 <UserListScreen {...props} />
