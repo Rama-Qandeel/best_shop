@@ -18,6 +18,9 @@ import {
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
   USER_LIST_RESET,
+  USER_DELETE_REQUEST,
+  USER_DELETE_SUCCESS,
+  USER_DELETE_FAIL,
 } from "../constant/userConstant";
 import { ORDER_LIST_MY_RESET } from '../constant/orderConstant'
 
@@ -215,3 +218,39 @@ export const getUsers = () => async (dispatch, getState) => {
   }
 }
 
+export const deleteUser = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_DELETE_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.delete(`http://localhost:5000/user/${id}`,config)
+
+    dispatch({
+      type: USER_DELETE_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: USER_DELETE_FAIL,
+      payload: message,
+    })
+  }
+}
