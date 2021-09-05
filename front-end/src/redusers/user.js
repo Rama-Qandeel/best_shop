@@ -28,7 +28,7 @@ export const userListReducer = (state = {}, action) => {
       case USER_LOGIN_SUCCESS:
         return {
           loading: false,
-          userIngo: action.payload,
+          userInfo: action.payload,
         }
       case USER_LOGIN_FAIL:
         return { loading: false, error: action.payload }
@@ -46,7 +46,7 @@ export const userListReducer = (state = {}, action) => {
       case USER_REGISTER_SUCCESS:
         return {
           loading: false,
-          userIngo: action.payload,
+          userInfo: action.payload,
         }
       case USER_REGISTER_FAIL:
         return { loading: false, error: action.payload }
@@ -83,7 +83,7 @@ export const userListReducer = (state = {}, action) => {
         return {
           loading: false,
           success:true,
-          userIngo: action.payload,
+          userInfo: action.payload,
         }
       case USER_UPDATE_PROFILE_FAIL:
         return { loading: false, error: action.payload }
