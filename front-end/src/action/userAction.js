@@ -115,7 +115,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     dispatch({
       type: USER_DETAILS_REQUEST,
     })
-
     const {
       userLogin: { userInfo },
     } = getState()
@@ -127,7 +126,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.get(`http://localhost:5000/user/${id}`, config)
-
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data,

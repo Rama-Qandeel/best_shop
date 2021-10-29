@@ -16,6 +16,7 @@ import PlaceOrder from "./screens/PlaceOrder";
 import OrderScreen from "./screens/OrderScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
+import ProductListScreen from "./screens/ProductListScreen";
 
 const App = () => {
   return (
@@ -42,6 +43,15 @@ const App = () => {
             render={(props) => (
               <div>
                 <UserEditScreen {...props} />
+              </div>
+            )}
+          />
+                    <Route
+            exact
+            path="/admin/productlist"
+            render={(props) => (
+              <div>
+                <ProductListScreen {...props} />
               </div>
             )}
           />
