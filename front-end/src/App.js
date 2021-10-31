@@ -17,6 +17,7 @@ import OrderScreen from "./screens/OrderScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
 import ProductListScreen from "./screens/ProductListScreen";
+import ProductEditScreen from './screens/ProductEditScreen'
 
 const App = () => {
   return (
@@ -52,6 +53,15 @@ const App = () => {
             render={(props) => (
               <div>
                 <ProductListScreen {...props} />
+              </div>
+            )}
+          />
+           <Route
+            exact
+            path="/admin/product/:id/edit"
+            render={(props) => (
+              <div>
+                <ProductEditScreen {...props} />
               </div>
             )}
           />
