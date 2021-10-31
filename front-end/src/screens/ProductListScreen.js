@@ -17,6 +17,8 @@ const ProductListScreen = ({ match, history }) => {
   const login = useSelector((state) => state.userLogin)
   const { userInfo } = login
 
+  const productDelete = useSelector((state) => state.productsDelete);
+  const { loading: loadingDelete, error: errorDelete ,success: successDelete } = productDelete;
 
 useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
@@ -24,10 +26,7 @@ useEffect(() => {
       } else {
           history.push('/login')
       }
-   }, [dispatch, userInfo,history ])
-
-  const productDelete = useSelector((state) => state.productsDelete);
-  const { success: successDelete } = productDelete;
+   }, [dispatch, userInfo, history, successDelete ])
 
 
   const deleteHandler = (id) => {
@@ -35,6 +34,10 @@ useEffect(() => {
       dispatch(deleteProduct(id));
     }
   };
+
+  const createProductHandler = () => {
+    console.log('++++++++++++++')
+  }
 
   return (
     <>
@@ -48,6 +51,8 @@ useEffect(() => {
           </Button>
         </Col>
       </Row>
+      {loadingDelete && <Loader/>}
+      {errorDelete && <Message variant="danger">{error}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
