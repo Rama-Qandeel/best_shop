@@ -6,7 +6,7 @@ import {addOrderItems, getOrderById, updateOrderToPaid, updateOrderToDelivered, 
 mainRouter.post('/order', protect, addOrderItems);
 mainRouter.get('/order/:id', protect, getOrderById);
 mainRouter.put('/order/:id/pay', protect, updateOrderToPaid);
-mainRouter.put('/order/:id/deliver', protect, updateOrderToDelivered);
+mainRouter.put('/order/:id/deliver', protect, admin, updateOrderToDelivered);
 mainRouter.get('/myorders', protect, getMyOrders);
 mainRouter.get('/orders', protect, admin, getAllOrders);
 
