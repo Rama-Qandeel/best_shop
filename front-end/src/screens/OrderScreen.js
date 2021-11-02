@@ -6,7 +6,7 @@ import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { detailsOrder, payOrder } from "../action/orderAction";
+import { deliverOrder, detailsOrder, payOrder } from "../action/orderAction";
 import { USER_DETAILS_RESET } from "../constant/userConstant";
 import { ORDER_CREATE_RESET, ORDER_PAY_RESET, ORDER_DELIVER_RESET } from "../constant/orderConstant";
 
@@ -28,7 +28,7 @@ const OrderScreen = ({ match }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 console.log('loading',loading)
-  if (!loading) {
+  if (!loading ) {
     //   Calculate prices
     const addDecimals = (num) => {
       return (Math.round(num * 100) / 100).toFixed(2)
@@ -72,8 +72,8 @@ console.log('loading',loading)
     dispatch(payOrder(orderId, paymentResult))
   }
 
-  const deliverHandler = (order) => {
-    dispatch(detailsOrder(order))
+  const deliverHandler = () => {
+    dispatch(deliverOrder(order))
   }
 
   return loading ? (
@@ -103,7 +103,7 @@ console.log('loading',loading)
               </p>
               {order.isDelivered ? (
                 <Message variant='success'>
-                  Delivered on {order.deliveredAt}
+                  Delivered on {order.deliveredAt.substring(0,10)}
                 </Message>
               ) : (
                 <Message variant='danger'>Not Delivered</Message>

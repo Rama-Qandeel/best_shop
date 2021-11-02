@@ -157,13 +157,12 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-
+    
     const { data } = await axios.put(
       `http://localhost:5000/order/${order._id}/deliver`,
       {},
       config
     )
-
     dispatch({
       type: ORDER_DELIVER_SUCCESS,
       payload: data,
