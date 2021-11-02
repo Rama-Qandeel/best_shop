@@ -30,7 +30,8 @@ useEffect(() => {
         dispatch(listProducts())
       } 
       if (successCreate){
-        history.push (`admin/product/${createdProduct._id}/edit`)
+        // history.push (`admin/product/${createdProduct._id}/edit`)
+        alert('created success')
       } else {
         dispatch(listProducts())
       }
