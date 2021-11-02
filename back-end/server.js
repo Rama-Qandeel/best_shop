@@ -4,12 +4,15 @@ import userRouter from './routes/user-route.js';
 import orderRouter from './routes/order-route.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import morgan from "morgan"
 import { notFound, errorHandler } from './middlewares/404.js'
 dotenv.config();
 import db from './db.js'
 db()
 const app = express();
-
+if(process.env.NODE_INV === 'development' ) {
+  app.use(morgan('dev'))
+}
 app.use(cors()); 
 app.use(express.json());
 app.use(mainRouter);
