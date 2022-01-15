@@ -8,7 +8,7 @@ mainRouter.get('/product/:id', getProductById);
 mainRouter.delete('/product/:id', protect, admin, deleteProduct);
 mainRouter.post('/product', protect, admin, createProduct);
 mainRouter.put('/product/:id', protect, admin, updateProduct);
-mainRouter.post('/product/:id/review', protect, createProductReview);
+mainRouter.post('/product/:id/reviews', protect, createProductReview);
 
 
 

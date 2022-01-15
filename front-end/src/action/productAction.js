@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ORDER_LIST_MY_RESET } from '../constant/orderConstant'
 import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -15,8 +16,11 @@ import {
   PRODUCT_UPDATE_REQUEST,
   PRODUCT_UPDATE_SUCCESS,
   PRODUCT_UPDATE_FAIL,
+  PRODUCT_CREATE_REVIEW_REQUEST,
+  PRODUCT_CREATE_REVIEW_SUCCESS,
+  PRODUCT_CREATE_REVIEW_FAIL,
 } from '../constant/productConstant'
-
+import { logout } from './userAction'
 
 export const listProducts = () => async (
     dispatch
@@ -179,4 +183,44 @@ export const listProducts = () => async (
           payload: message,
         })
       }
+        }
+
+        export const createProductReview = (productId, review) => async (
+          dispatch,
+          getState
+        ) => {
+          try {
+            dispatch({
+              type: PRODUCT_CREATE_REVIEW_REQUEST,
+            })
+        
+            const {
+              userLogin: { userInfo },
+            } = getState()
+        
+            const config = {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`,
+              },
+            }
+        
+            await axios.post(`http://localhost:5000/product/${productId}/reviews`, review, config)
+        
+            dispatch({
+              type: PRODUCT_CREATE_REVIEW_SUCCESS,
+            })
+          } catch (error) {
+            const message =
+              error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+            if (message === 'Not authorized, token failed') {
+              dispatch(logout())
+            }
+            dispatch({
+              type: PRODUCT_CREATE_REVIEW_FAIL,
+              payload: message,
+            })
+          }
         }
